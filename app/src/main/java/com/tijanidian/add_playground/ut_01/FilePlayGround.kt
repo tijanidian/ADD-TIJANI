@@ -3,6 +3,10 @@ package com.tijanidian.add_playground.ut_01
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import java.io.File
+import kotlin.io.path.Path
+import kotlin.io.path.createDirectory
+import kotlin.io.path.deleteIfExists
+import kotlin.io.path.exists
 
 /**
  *  los dos puntos ":" significa que extendiende de esa clase
@@ -21,6 +25,10 @@ class FilePlayGround(private val activity: AppCompatActivity) {
         //appendTextWithNewLine()
         //readLineByLine()
         //deleteFile()
+        //createFolder()
+        //createFileInFolder()
+
+
 
     }
 
@@ -116,12 +124,11 @@ class FilePlayGround(private val activity: AppCompatActivity) {
      * Función que lee un fichero y devuelve los colores
      * en un listado.
      */
-
     fun readFromFile(): MutableList<String> {
         //Creo array colors que voy a devolver
         val colors = mutableListOf<String>()
         val file = File(activity.filesDir, "colors.txt")
-
+        //Si no existe devulve colors
         if (!file.exists()) {
             return colors
         }
@@ -146,5 +153,22 @@ class FilePlayGround(private val activity: AppCompatActivity) {
         }
     }
 
+    /**
+     * Función para crear carpetas
+     */
+
+    fun createFolder(){
+        //Opción1
+        val file=File(activity.filesDir,"/docs")
+        file.mkdir()
+
+    }
+
+    fun createFileInFolder(){
+
+        val file= File(activity.filesDir.canonicalPath,"/documents/aad.txt")
+        //file.writeText("Hola!")
+
+    }
 
 }
