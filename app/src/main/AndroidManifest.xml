@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ADD_Playground">
         <activity
-            android:name="ut02.SharePreferncesActivity"
+            android:name="ut02.SharePreferencesActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
