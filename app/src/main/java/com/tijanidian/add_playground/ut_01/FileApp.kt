@@ -17,8 +17,35 @@ class FileApp(private val activity:AppCompatActivity) {
 
 
 
-    fun showFile(name:String){
-        val file = File(activity.filesDir, "$name+.txt")
+    fun showFiles(): MutableList<String> {
+        val file = File(activity.filesDir, ".")
 
+        return if (file.exists()) {
+            file.list().toMutableList()
+        } else {
+            mutableListOf()
+        }
+
+
+    }
+
+    fun showFilesContent(name: String): MutableList<String>{
+        val file = File(activity.filesDir,name )
+        return if (file.exists()) {
+            file.readLines().toMutableList()
+        } else {
+            mutableListOf()
+        }
+
+    }
+
+
+
+    fun deleteFile(name:String){
+        val file = File(activity.filesDir, name)
+
+        if(name==file.name){
+            file.delete()
+        }
     }
 }

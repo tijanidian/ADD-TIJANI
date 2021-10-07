@@ -6,4 +6,5 @@
     <string name="label_button_save">Guardar</string>
     <string name="label_button_explorer">Listar Ficheros</string>
     <string name="label_button_show_content">Mostrar contenido</string>
+    <string name="label_button_delete">Borrar contenido</string>
 </resources>
