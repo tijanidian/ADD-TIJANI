@@ -3,7 +3,6 @@ package ut02.exercise_repository
 
 
 import com.google.gson.Gson
-import ut02.UserModel
 
 /**
  * Ejercicio para ver y practicar el patrón repositorio con dos fuentes de datos:

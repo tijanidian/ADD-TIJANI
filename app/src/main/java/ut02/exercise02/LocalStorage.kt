@@ -9,7 +9,7 @@ import java.io.File
 //Algo generico que debe extender si o si de LocalModel
 interface LocalStorage<T:LocalModel> {
     fun save(model:T)
-    fun fetc(id:String):T?
+    fun fetch(id:String):T?
 }
 //Hay que definir primero la interfaz DataSource
 class FileLocalStorage<T:LocalModel>(
@@ -24,7 +24,7 @@ class FileLocalStorage<T:LocalModel>(
        file.writeText(serializer.toJson(model))
     }
 
-    override fun fetc(id: String): T {
+    override fun fetch(id: String): T {
         val jsonModel:String=file.readText()
         return serializer.fromJson(jsonModel)
     }
@@ -41,7 +41,7 @@ class MemLocalStorage<T:LocalModel> :LocalStorage<T>{
         dataStore.add(model)
     }
 
-    override fun fetc(id: String): T? {
+    override fun fetch(id: String): T? {
         //Para recorrer colecciones, es un filtro y obtenemos uno único valor porque es un id
        return dataStore.firstOrNull() { it.getId().toString() == id }
 
@@ -68,7 +68,7 @@ class MemLocalStorage<T:LocalModel> :LocalStorage<T>{
             editor.apply()
         }
 
-        override fun fetc(id: String): T? {
+        override fun fetch(id: String): T? {
             val jsonModel = sharedPref.getString(id,"{}")
             return if(jsonModel != null){
                 serializer.fromJson(jsonModel)
