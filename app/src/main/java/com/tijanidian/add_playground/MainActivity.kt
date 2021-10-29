@@ -6,27 +6,29 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
-import com.tijanidian.add_playground.ut_01.DataStorageType
 import com.tijanidian.add_playground.ut_01.FileApp
-import com.tijanidian.add_playground.ut_01.FilePlayGround
-import java.io.File
 
 class MainActivity : AppCompatActivity() {
     //creamos colecion de String de colores, tipo mutable
     val colors: MutableList<String> = mutableListOf()
 
-    //Edir text
+    //Edittext
     private lateinit var inputNameFile: AppCompatEditText
     private lateinit var inputContentFile: AppCompatEditText
+    private lateinit var inputNameText:AppCompatEditText
 
     //Botones
     private lateinit var buttonSave: AppCompatButton
     private lateinit var buttonShowContent: AppCompatButton
+    private lateinit var listFiles:AppCompatButton
 
     //Textos
     private lateinit var viewerFiles: TextView
     private lateinit var textFileName: TextView
     private lateinit var textFileContent: TextView
+
+    private lateinit var deleteFile:AppCompatButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,26 +99,71 @@ class MainActivity : AppCompatActivity() {
         //Boton para listar los ficheros
         buttonShowContent = findViewById(R.id.action_show_content)
         buttonShowContent.setOnClickListener {
-            showFileContent()
+            ListContentFiles()
+
+        }
+        deleteFile=findViewById(R.id.delete_content)
+        deleteFile.setOnClickListener {
+            deleteFile()
         }
 
-
+        listFiles=findViewById(R.id.action_explorer)
+        listFiles.setOnClickListener {
+            ListNameFiles()
+        }
     }
 
 
     private fun saveFile() {
         val fileApp = FileApp(this)
+
         val name = inputNameFile.text.toString()
         val data=inputContentFile.text.toString()
         fileApp.createFile(name, data)
 
 
-
     }
-
-    private fun showFileContent() {
+    private fun ListNameFiles() {
         val fileApp = FileApp(this)
 
+
+        val textContent= fileApp.showFiles()
+        textContent.forEach {
+            viewerFiles.text="${textFileContent.text} \n $it"
+        }
+
+
+        Log.d("@dev",fileApp.showFiles().toString() )
+    /*
+        val files = mutableListOf<String>("rojo.txt", "verde,txt", "amarillo.txt")
+        files.forEach {
+            textFileContent.text = "${textFileContent.text} \n $it"
+        }
+    */
+
+
+
     }
+
+    private fun ListContentFiles(){
+        val file=FileApp(this)
+        val name = inputNameFile.text.toString()
+        val textContent=file.showFilesContent(name)
+
+        textContent.forEach {
+            textFileContent.text="${textFileContent.text}\n $it"
+        }
+
+
+    }
+    private fun deleteFile(){
+        val fileApp = FileApp(this)
+        val name = inputNameFile.text.toString()
+        fileApp.deleteFile(name)
+
+    }
+
+
+
 
 }
