@@ -1,18 +1,47 @@
 package ut03.ex02.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import ut03.ex02.domain.PersonModel
+import ut03.ex02.domain.PetModel
 
 //Para trabajar con Room
 
 @Entity(tableName = "person")
-data class PersonEntity (
+data class PersonEntity(
         @PrimaryKey @ColumnInfo(name="id") val id:Int,
         @ColumnInfo(name="name") val name:String,
-        @ColumnInfo(name="age") val age:String,
+        @ColumnInfo(name="age") val age: Int,
         ){
 
-        fun toModel():PersonModel=PersonModel(id, name, age = 1,null)
+        //Método que permite converti a un modelo de datos mio
+        fun toModel():PersonModel=PersonModel(id, name, age ,"", PetModel(1,"perro",6))
 }
+
+@Entity(tableName = "pet")
+data class PetEntity(
+        @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int? = null,
+        @ColumnInfo(name = "name") val name: String,
+        @ColumnInfo(name="age") val age: Int,
+        @ColumnInfo(name = "person_id") val personId: Int
+
+)
+
+data class  PersonAndPet(
+        //Tabla padre
+        @Embedded val personEntity: PersonEntity,
+        //Cual es el atributo clave y la FK
+        @Relation(
+                parentColumn = "id",
+                entityColumn = "person_id"
+        )val petEntity: PetEntity
+){
+        fun toModel() = PersonModel(
+                personEntity.id!!,
+                personEntity.name,
+                personEntity.age,
+                "",
+                PetModel(petEntity.id!!, petEntity.name, 0)
+        )
+}
+
+
