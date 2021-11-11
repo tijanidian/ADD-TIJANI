@@ -11,4 +11,4 @@ data class PersonModel (val id: Int?=0,
 data class  PetModel(val id:Int, val name: String, val age:Int)
 
 
-//Hacer petEntity, crar petDao y declarar el Dao en la bd
+data class  CardModel(val id:Int, val brand:String, val model:String)

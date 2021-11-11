@@ -6,41 +6,35 @@ import ut03.ex02.domain.PersonModel
 
 class PersonLocalSource(applicationContext: Context) {
     //Creamos la instancia de la bd
-    private val db=Ut03Ex02DataBase.getInstance(applicationContext)
+    private val db = Ut03Ex02DataBase.getInstance(applicationContext)
 
     init {
-        Thread{
+        Thread {
             db.clearAllTables()
-            Thread.sleep(2000)
         }.start()
+        Thread.sleep(1000)
     }
 
-    fun findAll():List<PersonModel>{
-        val people=db.personDao().findAll()
+    fun findAll(): List<PersonModel> {
+        val people = db.personDao().getPersonAndPet()
         //Hacemos un mapper de un modelo a otro
-        return people.map{peopleEntity -> peopleEntity.toModel()}
+        return people?.map { peopleEntity -> peopleEntity.toModel() }?: mutableListOf()
     }
 
-    fun save(personModel: PersonModel){
+    fun save(personModel: PersonModel) {
         db.personDao().insertPersonAndPet(
             PersonEntity(
-            personModel.id,
-            personModel.name,
-            personModel.age
-        ),PetEntity(
+                personModel.id!!,
+                personModel.name,
+                personModel.age
+            ), PetEntity(
                 personModel.petModel.id,
                 personModel.petModel.name,
                 personModel.petModel.age,
-                personModel.id
-        )
-        )
-
-        db.personDao().insert(
-            PersonEntity(
-                personModel.id,
-                personModel.name,
-                personModel.age
+                personModel.id!!
             )
         )
     }
+
+
 }
