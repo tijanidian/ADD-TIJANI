@@ -16,7 +16,7 @@ class PersonLocalSource(applicationContext: Context) {
     }
 
     fun findAll(): List<PersonModel> {
-        val people = db.personDao().getPersonAndPet()
+        val people = db.personDao().getPersonAndPetAndCarsAndJobs()
         //Hacemos un mapper de un modelo a otro
         return people?.map { peopleEntity -> peopleEntity.toModel() }?: mutableListOf()
     }

@@ -4,14 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import ut03.ex02.data.PersonDao
-import ut03.ex02.data.PersonEntity
-import ut03.ex02.data.PetDao
-import ut03.ex02.data.PetEntity
+import ut03.ex02.data.*
+import ut03.ex02.data.dao.PersonDao
+import ut03.ex02.data.dao.PetDao
 
 //Tiene que ser una clase abstracta con la etiqueta Database e indicar las entidades
 @Database(
-    entities = [PersonEntity::class, PetEntity::class], version = 1,
+    entities = [PersonEntity::class,
+        PetEntity::class,
+    CarEntity::class,
+    JobEntity::class,
+    PersonJobEntity::class
+
+               ], version = 1,
     exportSchema = false
 )
 //Tiene que estender de RoomDataBase
