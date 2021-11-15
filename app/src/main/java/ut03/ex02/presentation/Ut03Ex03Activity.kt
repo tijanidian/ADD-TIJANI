@@ -10,8 +10,11 @@ import ut03.ex02.domain.*
 
 class Ut03Ex03Activity : AppCompatActivity() {
 
-    private val viewModel=Ut03Ex03ViewModel()
     private val TAG = Ut03Ex03Activity::class.java.simpleName
+
+    private val viewModel:Ut03Ex03ViewModel by viewModels (GetUsersUseCase(PersonDataRepository(
+        PersonLocalSource(applicationContext)
+    )))
 
     private val repository: PersonRepository by lazy {
         PersonDataRepository(PersonLocalSource(applicationContext))
