@@ -9,6 +9,8 @@ import ut03.ex02.data.PersonLocalSource
 import ut03.ex02.domain.*
 
 class Ut03Ex03Activity : AppCompatActivity() {
+
+    private val viewModel=Ut03Ex03ViewModel()
     private val TAG = Ut03Ex03Activity::class.java.simpleName
 
     private val repository: PersonRepository by lazy {
@@ -23,13 +25,6 @@ class Ut03Ex03Activity : AppCompatActivity() {
 
 
     private fun executeQuery() {
-
-        Thread {
-            repository.savePerson(PersonModel(1, "name01", 23, "calle uno", PetModel(1, "dog", 5),
-                emptyList(), emptyList()))
-            val people = repository.fetchAll()
-            Log.d(TAG, "$people")
-
-        }.start()
+        viewModel.getUsers()
     }
 }
