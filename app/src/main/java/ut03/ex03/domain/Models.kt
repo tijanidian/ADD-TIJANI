@@ -14,3 +14,7 @@ data class AlertModel(
 )
 
 data class  FileModel(val name:String, val url:String)
+
+interface LocalModel{
+    fun alertId():String
+}

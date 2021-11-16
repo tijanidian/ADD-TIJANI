@@ -19,15 +19,15 @@
         <activity
             android:name="ut03.ex01.DataBaseActivity"
             android:exported="true" />
-        
+        <!--
         <activity
             android:name="ut03.ex02.presentation.Ut03Ex03Activity"
             android:exported="true"
             android:label="@string/label_ut03_ex02"/>
-
+        -->
         <activity
             android:name="ut03.ex03.presentation.Ut03Ex03Activity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

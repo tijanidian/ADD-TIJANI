@@ -38,7 +38,7 @@ class RetrofitApiClient : ApiClient {
             .build()
 
 
-    override fun getAlert(alertId: String): AlertApiModel? {
+    override  fun getAlert(alertId: String): AlertApiModel? {
         val call = apiEndPoint.getAlert(alertId)
         val response = call.execute()
         return if (response.isSuccessful) {
@@ -48,7 +48,7 @@ class RetrofitApiClient : ApiClient {
         }
     }
 
-    override fun getALerts(): List<AlertApiModel> {
+    override  fun getALerts(): List<AlertApiModel> {
         val call = apiEndPoint.getAlerts()
         val response = call.execute()
 

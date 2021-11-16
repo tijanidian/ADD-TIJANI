@@ -20,16 +20,22 @@ class Ut03Ex03Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ut03_ex2)
-        executeQueryById("2")
+        //executeQueryById("2")
         executeQuery()
     }
 
 
     fun executeQueryById(alertId: String) {
-        viewModel.getAlert(alertId)
+        Thread{
+            viewModel.getAlert(alertId)
+        }.start()
+
     }
 
     fun executeQuery() {
-        viewModel.getAlerts()
+        Thread{
+            viewModel.getAlerts()
+        }
+
     }
 }
