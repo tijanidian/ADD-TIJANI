@@ -4,7 +4,7 @@ package ut03.ex02.domain
 interface PersonRepository {
 
     //Guardamos una persona
-    fun savePerson(personModel: PersonModel)
+    suspend fun savePerson(personModel: PersonModel)
 
-    fun fetchAll():List<PersonModel>
+    suspend fun fetchAll():List<PersonModel>
 }
