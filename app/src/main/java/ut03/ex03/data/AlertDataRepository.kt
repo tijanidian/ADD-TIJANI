@@ -7,7 +7,7 @@ import ut03.ex03.domain.AlertRepository
 class AlertDataRepository(private val remoteSource: AlertsRemoteSource):AlertRepository {
 
 
-    override  fun saveAlerts(): List<AlertModel> {
+    override  fun fetchAlerts(): List<AlertModel> {
         val alerts=remoteSource.getAlerts()
         TODO("Not yet implemented")
     }

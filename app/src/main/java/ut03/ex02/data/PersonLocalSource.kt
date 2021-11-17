@@ -1,12 +1,12 @@
 package ut03.ex02.data
 
 import android.content.Context
-import ut03.ex02.app.Ut03Ex02DataBase
+import ut03.ex02.app.Ut03Ex03DataBase
 import ut03.ex02.domain.PersonModel
 
 class PersonLocalSource(applicationContext: Context) {
     //Creamos la instancia de la bd
-    private val db = Ut03Ex02DataBase.getInstance(applicationContext)
+    private val db = Ut03Ex03DataBase.getInstance(applicationContext)
 
     init {
         Thread {

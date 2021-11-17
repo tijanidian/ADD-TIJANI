@@ -27,6 +27,6 @@ class Ut03Ex02Activity : AppCompatActivity() {
 
     private fun executeQuery() {
       viewModel.getUsers()
-        
+
     }
 }

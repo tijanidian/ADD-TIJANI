@@ -1,9 +1,10 @@
 package ut03.ex03.data.local.dao
 
+import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import ut03.ex03.data.local.entity.AlertEntity
-
+@Dao
 interface AlertDao {
 
     @Transaction
