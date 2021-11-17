@@ -20,7 +20,7 @@ import ut03.ex02.data.dao.PetDao
     exportSchema = false
 )
 //Tiene que estender de RoomDataBase
-abstract class Ut03Ex02DataBase : RoomDatabase() {
+abstract class Ut03Ex03DataBase : RoomDatabase() {
 
     abstract fun personDao(): PersonDao
     abstract fun petDao(): PetDao
@@ -28,18 +28,18 @@ abstract class Ut03Ex02DataBase : RoomDatabase() {
     //Singleton
     companion object {
         @Volatile
-        private var instance: Ut03Ex02DataBase? = null
+        private var instance: Ut03Ex03DataBase? = null
 
-        fun getInstance(applicationContext: Context): Ut03Ex02DataBase {
+        fun getInstance(applicationContext: Context): Ut03Ex03DataBase {
             return instance ?: synchronized(this) {
                 instance ?: buildDatabase(applicationContext).also { instance = it }
             }
         }
 
-        private fun buildDatabase(applicationContext: Context): Ut03Ex02DataBase {
+        private fun buildDatabase(applicationContext: Context): Ut03Ex03DataBase {
             return Room.databaseBuilder(
                 applicationContext,
-                Ut03Ex02DataBase::class.java,
+                Ut03Ex03DataBase::class.java,
                 "db-ut03-ex02"
             ).build()
         }
