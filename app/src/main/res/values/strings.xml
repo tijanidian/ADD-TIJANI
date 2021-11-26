@@ -19,4 +19,6 @@
     <string name="preference_file_exercise02">ut02_exercise02</string>
     <string name="preference_encrypt_file_key">ut02_shared_pref_encrypt</string>
     <string name="file_customer">file_customer</string>
+    <string name="file_invoice">file_invoice</string>
+    <string name="preference_encrypt_file_invoice_key">ut02_shared_pref_encrypt</string>
 </resources>

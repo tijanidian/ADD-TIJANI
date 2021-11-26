@@ -4,7 +4,7 @@ import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.tijanidian.add_playground.R
-import commons.GsonSerializer
+import com.tijanidian.add_playground.commons.GsonSerializer
 
 /**
  * Actividad que me permite ejecutar una fuente de datos en concreto según el botón pulsado.

@@ -8,10 +8,6 @@ import com.tijanidian.add_playground.R
 import com.tijanidian.add_playground.commons.serializer.JsonSerializer
 import com.tijanidian.add_playground.ut02.ut02Ex04SharePref.CustomerModel
 
-interface localStorage {
-    fun save(customer: CustomerModel)
-    fun save(customers: List<CustomerModel>)
-}
 
 class CustomerSharPrefLocalSource(
     private val context: AppCompatActivity,
@@ -48,6 +44,7 @@ class CustomerSharPrefLocalSource(
      * Función que me permite guardar un listado de clientes en un SharedPreferences.
      */
     fun save(customers: List<CustomerModel>) {
+        val edit=sharedPref.edit()
         customers.map { customerModel ->
            serializer.toJson(customerModel,CustomerModel::class.java)
         }
@@ -60,24 +57,28 @@ class CustomerSharPrefLocalSource(
      */
     fun update(customer: CustomerModel) {
         val newCustomers: MutableList<CustomerModel> = mutableListOf()
-        val fetchAllCustomer = fetch()
+        val fetchAllCustomer = fetch().toMutableList()
 
         fetchAllCustomer.forEach {
             newCustomers.add(it )
         }
 
-
+        val index_position = fetchAllCustomer.indexOfFirst { it.id == customer.id }
+        fetchAllCustomer.set(index_position, customer)
     }
 
     /**
      * Función que me permite eliminar un cliente de un SharedPreferences.
      */
     fun remove(customerId: Int) {
-        val fetchAllCustomer = fetch()
+        val fetchAllCustomer = fetch().toMutableList()
+        val customer = fetchAllCustomer.firstOrNull { it.id == customerId }
+        fetchAllCustomer.remove(customer)
+
 
         fetchAllCustomer.forEach {
             if (it.id == customerId) {
-                remove(it.id)
+                it.id
             }
         }
     }
@@ -90,7 +91,7 @@ class CustomerSharPrefLocalSource(
         sharedPref.all?.values?.forEach {
             customersList.add(serializer.fromJson(it as String, CustomerModel::class.java))
         }
-        return emptyList()
+        return customersList
     }
 
     fun findById(customerId: Int): CustomerModel? {

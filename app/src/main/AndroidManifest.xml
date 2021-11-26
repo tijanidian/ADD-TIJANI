@@ -9,15 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ADD_Playground">
-        <activity
-            android:name="com.tijanidian.add_playground.ut02.ut02Ex04SharePref.presentation.Ex02SharedPrefActivity"
-            android:exported="true" />
+
         <activity
             android:name="com.tijanidian.add_playground.ut02.SharePreferencesActivity"
             android:exported="true" />
         <activity
             android:name="com.tijanidian.add_playground.ut02.exercise02.Exercise02Activity"
-            android:exported="true">
+            android:exported="true"/>
+            <activity
+                android:name="com.tijanidian.add_playground.ut02.ut02Ex04SharePref.presentation.Ex02SharedPrefActivity"
+                android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
