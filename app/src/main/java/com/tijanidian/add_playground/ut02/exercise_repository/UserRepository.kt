@@ -1,4 +1,4 @@
-package ut02.exercise_repository
+package com.tijanidian.add_playground.ut02.exercise_repository
 
 
 

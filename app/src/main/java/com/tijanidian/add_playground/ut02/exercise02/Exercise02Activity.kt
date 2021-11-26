@@ -1,4 +1,4 @@
-package ut02.exercise02
+package com.tijanidian.add_playground.ut02.exercise02
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button

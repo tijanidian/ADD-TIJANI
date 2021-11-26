@@ -2,7 +2,7 @@ package commons
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import ut02.exercise02.TapaLocalModel
+import com.tijanidian.add_playground.ut02.exercise02.TapaLocalModel
 import java.lang.reflect.Type
 
 interface Serializer<T> {
