@@ -1,6 +1,5 @@
-package ut02
+package com.tijanidian.add_playground.ut02
 
-import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log

@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ut02_share_pref.presentation.Ex02SharedPrefActivity">
+    tools:context=".ut02.ut02Ex04SharePref.presentation.Ex02SharedPrefActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

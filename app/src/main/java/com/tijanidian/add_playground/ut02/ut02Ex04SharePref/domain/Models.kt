@@ -1,4 +1,4 @@
-package com.tijanidian.add_playground.ut02_share_pref
+package com.tijanidian.add_playground.ut02.ut02Ex04SharePref
 
 import java.util.*
 

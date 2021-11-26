@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ADD_Playground">
         <activity
-            android:name="com.tijanidian.add_playground.ut02_share_pref.presentation.Ex02SharedPrefActivity"
+            android:name="com.tijanidian.add_playground.ut02.ut02Ex04SharePref.presentation.Ex02SharedPrefActivity"
             android:exported="true" />
         <activity
-            android:name="ut02.SharePreferencesActivity"
+            android:name="com.tijanidian.add_playground.ut02.SharePreferencesActivity"
             android:exported="true" />
         <activity
-            android:name="ut02.exercise02.Exercise02Activity"
+            android:name="com.tijanidian.add_playground.ut02.exercise02.Exercise02Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ut_01.MainActivity"
             android:exported="true" />
     </application>
 

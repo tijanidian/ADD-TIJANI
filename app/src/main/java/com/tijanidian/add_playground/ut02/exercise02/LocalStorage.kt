@@ -1,9 +1,10 @@
-package ut02.exercise02
+package com.tijanidian.add_playground.ut02.exercise02
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import com.tijanidian.add_playground.R
-import commons.Serializer
+import com.tijanidian.add_playground.commons.Serializer
+
 import java.io.File
 
 //Algo generico que debe extender si o si de LocalModel
@@ -14,7 +15,8 @@ interface LocalStorage<T:LocalModel> {
 //Hay que definir primero la interfaz DataSource
 class FileLocalStorage<T:LocalModel>(
     private val activity: AppCompatActivity,
-    private val serializer:Serializer<T>):LocalStorage<T>
+    private val serializer: Serializer<T>
+):LocalStorage<T>
 {
 
 

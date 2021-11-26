@@ -1,4 +1,4 @@
-package com.tijanidian.add_playground.ut02_share_pref.presentation
+package com.tijanidian.add_playground.ut02.ut02Ex04SharePref.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

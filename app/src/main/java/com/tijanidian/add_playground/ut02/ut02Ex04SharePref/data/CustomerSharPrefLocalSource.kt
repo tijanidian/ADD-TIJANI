@@ -1,18 +1,22 @@
-package com.tijanidian.add_playground.ut02_share_pref
+package com.tijanidian.add_playground.ut02.ut02Ex04SharePref.data
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.google.gson.JsonSerializer
-
-
 import com.tijanidian.add_playground.R
+import com.tijanidian.add_playground.commons.serializer.JsonSerializer
+import com.tijanidian.add_playground.ut02.ut02Ex04SharePref.CustomerModel
 
+interface localStorage {
+    fun save(customer: CustomerModel)
+    fun save(customers: List<CustomerModel>)
+}
 
-class CustomerSharPrefLocalSource(private val context: AppCompatActivity,
-                    private val serializer: JsonSerializer<T>
-                                  ) {
+class CustomerSharPrefLocalSource(
+    private val context: AppCompatActivity,
+    private val serializer: JsonSerializer
+) {
 
     private val sharedPref = context.getSharedPreferences(
         context.getString(R.string.file_customer), Context.MODE_PRIVATE
@@ -35,14 +39,18 @@ class CustomerSharPrefLocalSource(private val context: AppCompatActivity,
      */
     fun save(customer: CustomerModel) {
         val edit = sharedPref.edit()
-        edit.putString("${serializer.to}")
-        edit.commit()
+        val idCustomer = customer.id.toString()
+        edit.putString(idCustomer, serializer.toJson(customer, CustomerModel::class.java))
+        edit.apply()
     }
 
     /**
      * Función que me permite guardar un listado de clientes en un SharedPreferences.
      */
     fun save(customers: List<CustomerModel>) {
+        customers.map { customerModel ->
+           serializer.toJson(customerModel,CustomerModel::class.java)
+        }
 
     }
 
@@ -51,26 +59,50 @@ class CustomerSharPrefLocalSource(private val context: AppCompatActivity,
      * Se puede modificar cualquier dato excepto el id del cliente.
      */
     fun update(customer: CustomerModel) {
-        //TODO
+        val newCustomers: MutableList<CustomerModel> = mutableListOf()
+        val fetchAllCustomer = fetch()
+
+        fetchAllCustomer.forEach {
+            newCustomers.add(it )
+        }
+
+
     }
 
     /**
      * Función que me permite eliminar un cliente de un SharedPreferences.
      */
     fun remove(customerId: Int) {
+        val fetchAllCustomer = fetch()
 
+        fetchAllCustomer.forEach {
+            if (it.id == customerId) {
+                remove(it.id)
+            }
+        }
     }
 
     /**
      * Función que me permite obtener un listado de todos los clientes almacenados en un SharedPreferences.
      */
     fun fetch(): List<CustomerModel> {
-        //TODO
+        val customersList: MutableList<CustomerModel> = mutableListOf()
+        sharedPref.all?.values?.forEach {
+            customersList.add(serializer.fromJson(it as String, CustomerModel::class.java))
+        }
         return emptyList()
     }
 
     fun findById(customerId: Int): CustomerModel? {
-        //TODO
+        val fetchAllCustomer = fetch()
+        fetchAllCustomer.forEach {
+            if (it.id == customerId) {
+                return it
+            }
+        }
+
         return null
     }
+
+
 }
