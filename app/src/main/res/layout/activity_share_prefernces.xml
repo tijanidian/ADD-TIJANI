@@ -8,47 +8,93 @@
 
     tools:context="com.tijanidian.add_playground.ut02.SharePreferencesActivity">
 
-
+    <TextView
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CLIENTES"/>
     <Button
         android:id="@+id/save_customer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="save customer" />
 
     <Button
         android:id="@+id/save_customers"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="save customers" />
 
     <Button
         android:id="@+id/update"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="update" />
 
     <Button
         android:id="@+id/remove"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="remove" />
 
     <Button
         android:id="@+id/fetch"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="fetch" />
     <Button
         android:id="@+id/fetch_by_id"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="fetch by ID" />
+
+
+    <TextView
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FACTURAS"/>
+
+    <Button
+        android:id="@+id/save_invoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="save invoice" />
+
+
+    <Button
+        android:id="@+id/remove_invoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="remove" />
+
+    <Button
+        android:id="@+id/fetch_invoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Fetch invoice" />
+
+    <Button
+        android:id="@+id/fetch_invoice_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="invoide ID" />
 
 
 </LinearLayout>

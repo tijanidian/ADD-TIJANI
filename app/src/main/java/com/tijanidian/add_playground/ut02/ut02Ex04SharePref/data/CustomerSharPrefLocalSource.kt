@@ -14,10 +14,6 @@ class CustomerSharPrefLocalSource(
     private val serializer: JsonSerializer
 ) {
 
-    private val sharedPref = context.getSharedPreferences(
-        context.getString(R.string.file_customer), Context.MODE_PRIVATE
-    )
-
     val masterKey = MasterKey.Builder(context)
         .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
         .build()
@@ -34,7 +30,7 @@ class CustomerSharPrefLocalSource(
      * Función que me permite guardar un cliente en un SharedPreferences.
      */
     fun save(customer: CustomerModel) {
-        val edit = sharedPref.edit()
+        val edit = encryptSharedPref.edit()
         val idCustomer = customer.id.toString()
         edit.putString(idCustomer, serializer.toJson(customer, CustomerModel::class.java))
         edit.apply()
@@ -59,16 +55,15 @@ class CustomerSharPrefLocalSource(
         val fetchAllCustomer = fetch().toMutableList()
 
         fetchAllCustomer.forEach {
-            newCustomers.add(it )
+            newCustomers.add(it)
         }
 
         val indexPosition = fetchAllCustomer.indexOfFirst { it.id == customer.id }
         fetchAllCustomer[indexPosition] = customer
-        val edit = sharedPref.edit()
+        val edit = encryptSharedPref.edit()
         val idCustomer = customer.id.toString()
         edit.putString(idCustomer, serializer.toJson(customer, CustomerModel::class.java))
         edit.apply()
-
 
 
     }
@@ -84,7 +79,7 @@ class CustomerSharPrefLocalSource(
  */
 
 
-       sharedPref.edit().remove(customerId.toString()).apply()
+        encryptSharedPref.edit().remove(customerId.toString()).apply()
 
 
     }
@@ -94,7 +89,7 @@ class CustomerSharPrefLocalSource(
      */
     fun fetch(): List<CustomerModel> {
         val customersList: MutableList<CustomerModel> = mutableListOf()
-        sharedPref.all?.values?.forEach {
+        encryptSharedPref.all?.values?.forEach {
             customersList.add(serializer.fromJson(it as String, CustomerModel::class.java))
         }
         return customersList

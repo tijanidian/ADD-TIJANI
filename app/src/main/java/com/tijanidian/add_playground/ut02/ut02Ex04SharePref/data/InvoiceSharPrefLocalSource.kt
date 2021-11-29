@@ -6,6 +6,7 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.tijanidian.add_playground.R
 import com.tijanidian.add_playground.commons.serializer.JsonSerializer
+import com.tijanidian.add_playground.ut02.ut02Ex04SharePref.CustomerModel
 import com.tijanidian.add_playground.ut02.ut02Ex04SharePref.InvoiceModel
 
 /**
@@ -19,42 +20,42 @@ class InvoiceSharPrefLocalSource (private val context: AppCompatActivity,
         context.getString(R.string.file_invoice), Context.MODE_PRIVATE
     )
 
-    val masterKey = MasterKey.Builder(context)
-        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-        .build()
-
-    private val encryptSharedPref = EncryptedSharedPreferences.create(
-        context,
-        context.getString(R.string.preference_encrypt_file_invoice_key),
-        masterKey,
-        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-    )
 
     /**
      * Función que me permite guardar un cliente en un sharedprefe.
      */
     fun save(invoice: InvoiceModel) {
-        //TODO
+        val edit =sharedPref.edit()
+        val idInvoice =invoice.id.toString()
+        edit.putString(idInvoice, serializer.toJson(invoice, InvoiceModel::class.java))
+        edit.apply()
     }
 
     /**
      * Función que me permite eliminar un cliente de un SharedPreferences.
      */
     fun remove(invoiceId: Int) {
-
+        sharedPref.edit().remove(invoiceId.toString()).apply()
     }
 
     /**
      * Función que me permite obtener un listado de todos los clientes almacenados en un SharedPreferences.
      */
     fun fetch(): List<InvoiceModel> {
-        //TODO
+        val customersList: MutableList<InvoiceModel> = mutableListOf()
+        sharedPref.all?.values?.forEach {
+            customersList.add(serializer.fromJson(it as String, InvoiceModel::class.java))
+        }
         return emptyList()
     }
 
     fun findById(invoiceId: Int): InvoiceModel? {
-        //TODO
+        val fetchAllCustomer = fetch()
+        fetchAllCustomer.forEach {
+            if (it.id == invoiceId) {
+                return it
+            }
+        }
         return null
     }
 }
