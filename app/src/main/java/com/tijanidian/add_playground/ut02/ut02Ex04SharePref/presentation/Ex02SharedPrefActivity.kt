@@ -12,11 +12,11 @@ import com.tijanidian.add_playground.ut02.ut02Ex04SharePref.data.CustomerSharPre
 
 class Ex02SharedPrefActivity : AppCompatActivity() {
 
-    private val localSource:CustomerSharPrefLocalSource by lazy {
-        CustomerSharPrefLocalSource(this,GsonSerializer(Gson()))
+    private val localSource: CustomerSharPrefLocalSource by lazy {
+        CustomerSharPrefLocalSource(this, GsonSerializer(Gson()))
     }
 
-    private val binding:ActivitySharePreferncesBinding by lazy {
+    private val binding: ActivitySharePreferncesBinding by lazy {
         ActivitySharePreferncesBinding.inflate(layoutInflater)
     }
 
@@ -27,7 +27,7 @@ class Ex02SharedPrefActivity : AppCompatActivity() {
     }
 
 
-    private fun setUpView(){
+    private fun setUpView() {
         binding.saveCustomer.setOnClickListener {
             saveCustomer()
         }
@@ -43,30 +43,45 @@ class Ex02SharedPrefActivity : AppCompatActivity() {
         binding.update.setOnClickListener {
             upDate()
         }
+        binding.saveCustomers.setOnClickListener {
+            saveCustomers()
+        }
 
     }
-    private fun saveCustomer(){
-        val customer=CustomerModel(1,"Pepe","Pep")
+
+    private fun saveCustomer() {
+        val customer = CustomerModel(1, "Pepe", "Pep")
         localSource.save(customer)
-    }
-    private fun saveCustomers(){
 
     }
-    private fun upDate(){
-        val customer=CustomerModel(1,"PEPE","PE")
+
+    private fun saveCustomers() {
+        val customer3 = CustomerModel(5, "Jorge", "Barrio")
+        val customer4 = CustomerModel(6, "Xexu", "xexu")
+        val customer5 = CustomerModel(7, "Manolito", "Ramos")
+        localSource.save(mutableListOf(customer3,customer4,customer5))
     }
-    private fun remove(idCustomer:Int){
-        val remove= localSource.remove(idCustomer)
-        Log.d("@tijani","$remove")
-    }
-    private fun fetch(){
-        val fetch= localSource.fetch()
-        Log.d("@tijani","$fetch")
+
+    private fun upDate() {
+        val customer = CustomerModel(1, "Pepe", "Manzana")
+        localSource.update(customer)
 
     }
-    private fun findById(idCustomer:Int){
-        val find= localSource.findById(1)
-        Log.d("@tijani","$find")
+
+    private fun remove(idCustomer: Int) {
+        val remove = localSource.remove(idCustomer)
+        Log.d("@tijani", "$remove")
+    }
+
+    private fun fetch() {
+        val fetch = localSource.fetch()
+        Log.d("@tijani", "$fetch")
+
+    }
+
+    private fun findById(idCustomer: Int) {
+        val find = localSource.findById(1)
+        Log.d("@tijani", "$find")
     }
 
 

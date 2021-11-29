@@ -44,9 +44,12 @@ class CustomerSharPrefLocalSource(
      * Función que me permite guardar un listado de clientes en un SharedPreferences.
      */
     fun save(customers: List<CustomerModel>) {
-        val edit=sharedPref.edit()
+        val edit = sharedPref.edit()
+
         customers.map { customerModel ->
-           serializer.toJson(customerModel,CustomerModel::class.java)
+            val customerMap = serializer.toJson(customerModel, CustomerModel::class.java)
+            edit.putString(ID, customerMap)
+            edit.apply()
         }
 
     }
@@ -56,31 +59,40 @@ class CustomerSharPrefLocalSource(
      * Se puede modificar cualquier dato excepto el id del cliente.
      */
     fun update(customer: CustomerModel) {
+        val edit = sharedPref.edit()
         val newCustomers: MutableList<CustomerModel> = mutableListOf()
         val fetchAllCustomer = fetch().toMutableList()
 
         fetchAllCustomer.forEach {
-            newCustomers.add(it )
+            newCustomers.add(it)
         }
 
         val index_position = fetchAllCustomer.indexOfFirst { it.id == customer.id }
-        fetchAllCustomer.set(index_position, customer)
+        edit.putString(index_position.toString(), serializer.toJson(customer, CustomerModel::class.java))
+        edit.apply()
+
     }
 
     /**
      * Función que me permite eliminar un cliente de un SharedPreferences.
      */
     fun remove(customerId: Int) {
+        /*
+         val fetchAllCustomer = fetch().toMutableList()
+         val customer = fetchAllCustomer.firstOrNull { it.id == customerId }
+         fetchAllCustomer.remove(customer)
+ */
+        val edit = sharedPref.edit()
         val fetchAllCustomer = fetch().toMutableList()
         val customer = fetchAllCustomer.firstOrNull { it.id == customerId }
         fetchAllCustomer.remove(customer)
 
+        val fetchAfterRemove=fetch().toMutableList()
+        edit.clear()
+        edit.apply()
+        save(fetchAfterRemove)
 
-        fetchAllCustomer.forEach {
-            if (it.id == customerId) {
-                it.id
-            }
-        }
+
     }
 
     /**
@@ -105,5 +117,8 @@ class CustomerSharPrefLocalSource(
         return null
     }
 
+    companion object {
+        val ID: String = CustomerModel::class.java.simpleName
+    }
 
 }
