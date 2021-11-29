@@ -55,20 +55,21 @@ class CustomerSharPrefLocalSource(
      * Se puede modificar cualquier dato excepto el id del cliente.
      */
     fun update(customer: CustomerModel) {
-        val edit = sharedPref.edit()
         val newCustomers: MutableList<CustomerModel> = mutableListOf()
         val fetchAllCustomer = fetch().toMutableList()
 
         fetchAllCustomer.forEach {
-            newCustomers.add(it)
+            newCustomers.add(it )
         }
 
-        val index_position = fetchAllCustomer.indexOfFirst { it.id == customer.id }
-        edit.putString(
-            index_position.toString(),
-            serializer.toJson(customer, CustomerModel::class.java)
-        )
+        val indexPosition = fetchAllCustomer.indexOfFirst { it.id == customer.id }
+        fetchAllCustomer[indexPosition] = customer
+        val edit = sharedPref.edit()
+        val idCustomer = customer.id.toString()
+        edit.putString(idCustomer, serializer.toJson(customer, CustomerModel::class.java))
         edit.apply()
+
+
 
     }
 
@@ -81,15 +82,9 @@ class CustomerSharPrefLocalSource(
          val customer = fetchAllCustomer.firstOrNull { it.id == customerId }
          fetchAllCustomer.remove(customer)
  */
-        val edit = sharedPref.edit()
-        val fetchAllCustomer = fetch().toMutableList()
-        val customer = fetchAllCustomer.firstOrNull { it.id == customerId }
-        fetchAllCustomer.remove(customer)
 
-        val fetchAfterRemove = fetch().toMutableList()
-        edit.clear()
-        edit.apply()
-        save(fetchAfterRemove)
+
+       sharedPref.edit().remove(customerId.toString()).apply()
 
 
     }

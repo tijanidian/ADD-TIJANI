@@ -35,10 +35,10 @@ class Ex02SharedPrefActivity : AppCompatActivity() {
             fetch()
         }
         binding.fetchById.setOnClickListener {
-            findById(1)
+            findById(6)
         }
         binding.remove.setOnClickListener {
-            remove(1)
+            remove(5)
         }
         binding.update.setOnClickListener {
             upDate()
@@ -80,7 +80,7 @@ class Ex02SharedPrefActivity : AppCompatActivity() {
     }
 
     private fun findById(idCustomer: Int) {
-        val find = localSource.findById(1)
+        val find = localSource.findById(idCustomer)
         Log.d("@tijani", "$find")
     }
 
