@@ -44,12 +44,8 @@ class CustomerSharPrefLocalSource(
      * Función que me permite guardar un listado de clientes en un SharedPreferences.
      */
     fun save(customers: List<CustomerModel>) {
-        val edit = sharedPref.edit()
-
         customers.map { customerModel ->
-            val customerMap = serializer.toJson(customerModel, CustomerModel::class.java)
-            edit.putString(ID, customerMap)
-            edit.apply()
+            save(customerModel)
         }
 
     }
@@ -68,7 +64,10 @@ class CustomerSharPrefLocalSource(
         }
 
         val index_position = fetchAllCustomer.indexOfFirst { it.id == customer.id }
-        edit.putString(index_position.toString(), serializer.toJson(customer, CustomerModel::class.java))
+        edit.putString(
+            index_position.toString(),
+            serializer.toJson(customer, CustomerModel::class.java)
+        )
         edit.apply()
 
     }
@@ -87,7 +86,7 @@ class CustomerSharPrefLocalSource(
         val customer = fetchAllCustomer.firstOrNull { it.id == customerId }
         fetchAllCustomer.remove(customer)
 
-        val fetchAfterRemove=fetch().toMutableList()
+        val fetchAfterRemove = fetch().toMutableList()
         edit.clear()
         edit.apply()
         save(fetchAfterRemove)
