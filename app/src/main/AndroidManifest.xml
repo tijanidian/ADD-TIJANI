@@ -9,15 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ADD_Playground">
-        <activity
-            android:name=".ut03ex04.presentation.Ut03Ex04Activity"
-            android:exported="true" />
+
         <activity
             android:name=".ut02.SharePreferencesActivity"
             android:exported="true" />
         <activity
             android:name=".ut02.exercise02.Exercise02Activity"
-            android:exported="true">
+            android:exported="true"/>
+            <activity
+                android:name=".ut03ex04.presentation.Ut03Ex04Activity"
+                android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
