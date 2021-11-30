@@ -13,7 +13,6 @@ data class CustomerEntity(
     @PrimaryKey @ColumnInfo(name = "id") val customerId: Int,
     @ColumnInfo(name = "name") val customerName: String,
     @ColumnInfo(name = "surname") val customerSurname: String,
-    @ColumnInfo(name = "invoiceId") val invoiceId: Int,
 ) {
     fun toModel() = CustomerModel(
         customerId,
@@ -22,10 +21,8 @@ data class CustomerEntity(
     )
 
     companion object {
-        fun toEntity(customerModel: CustomerModel) = CustomerModel(
-            customerModel.id,
-            customerModel.name,
-            customerModel.surname
+        fun toEntity(customerModel: CustomerModel) = CustomerEntity(
+            customerModel.id,customerModel.name,customerModel.surname
         )
     }
 

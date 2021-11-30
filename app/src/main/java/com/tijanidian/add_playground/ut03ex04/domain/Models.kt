@@ -1,4 +1,4 @@
-package com.tijanidian.add_playground.ut03.domain
+package com.tijanidian.add_playground.ut03ex04.domain
 
 import java.util.*
 
