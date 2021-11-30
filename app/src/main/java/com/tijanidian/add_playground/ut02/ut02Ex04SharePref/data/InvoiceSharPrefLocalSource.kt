@@ -46,7 +46,7 @@ class InvoiceSharPrefLocalSource (private val context: AppCompatActivity,
         sharedPref.all?.values?.forEach {
             customersList.add(serializer.fromJson(it as String, InvoiceModel::class.java))
         }
-        return emptyList()
+        return customersList
     }
 
     fun findById(invoiceId: Int): InvoiceModel? {
