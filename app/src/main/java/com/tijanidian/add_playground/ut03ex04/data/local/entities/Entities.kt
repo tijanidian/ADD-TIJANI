@@ -1,10 +1,10 @@
-package com.tijanidian.add_playground.ut03.data.local.entities
+package com.tijanidian.add_playground.ut03ex04.data.local.entities
 
 import androidx.room.*
-import com.tijanidian.add_playground.ut03.domain.CustomerModel
-import com.tijanidian.add_playground.ut03.domain.InvoiceLinesModel
-import com.tijanidian.add_playground.ut03.domain.InvoiceModel
-import com.tijanidian.add_playground.ut03.domain.ProductModel
+import com.tijanidian.add_playground.ut03ex04.domain.CustomerModel
+import com.tijanidian.add_playground.ut03ex04.domain.InvoiceLinesModel
+import com.tijanidian.add_playground.ut03ex04.domain.InvoiceModel
+import com.tijanidian.add_playground.ut03ex04.domain.ProductModel
 import java.util.*
 
 
@@ -13,6 +13,7 @@ data class CustomerEntity(
     @PrimaryKey @ColumnInfo(name = "id") val customerId: Int,
     @ColumnInfo(name = "name") val customerName: String,
     @ColumnInfo(name = "surname") val customerSurname: String,
+    @ColumnInfo(name = "invoiceId") val invoiceId: Int,
 ) {
     fun toModel() = CustomerModel(
         customerId,
@@ -54,6 +55,7 @@ data class CustomerEntity(
     data class InvoiceLineEntity(
         @PrimaryKey @ColumnInfo(name = "id") val invoiceLineId: Int,
         @ColumnInfo(name = "productId") val productId: Int,
+        @ColumnInfo(name = "invoiceId") val invoiceId: Int,
     ) {
         fun toModel(productEntity: ProductEntity) = InvoiceLinesModel(
             invoiceLineId,
@@ -61,9 +63,10 @@ data class CustomerEntity(
         )
 
         companion object {
-            fun toEntity(invoiceLinesModel: InvoiceLinesModel, productId: Int) = InvoiceLineEntity(
+            fun toEntity(invoiceLinesModel: InvoiceLinesModel, productId: Int,invoiceId:Int) = InvoiceLineEntity(
                 invoiceLinesModel.id,
                 productId,
+                invoiceId,
             )
         }
     }
@@ -92,15 +95,33 @@ data class CustomerEntity(
 
 
     /**
-     * Una factura está asociada a UN cliente
+     * Una factura está asociada a UN cliente InvoiceAndCustomer
      */
 
-
+    data class InvoiceLineAndProduct(
+        @Embedded val invoiceEntity:InvoiceEntity,
+        @Relation(
+            parentColumn = "id",
+            entityColumn = "customerId"
+        ) val customerEntity: CustomerEntity
+    )
 
 
     /**
      * Una factura pude tener una o varias líneas de factura
      */
+    data class InvoiceAndCustomerAndInvoiceLine(
+        @Embedded val invoiceEntity: InvoiceEntity,
 
+        @Relation(
+            parentColumn = "id",
+            entityColumn = "customerId"
+        ) val customerEntity: CustomerEntity,
+
+        @Relation(
+            parentColumn = "id",
+            entityColumn = "invoiceId"
+        )val invoiceLineEntities: List<InvoiceLineEntity>
+    )
 
 }
