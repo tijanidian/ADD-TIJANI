@@ -1,11 +1,12 @@
-package com.tijanidian.add_playground.ut03ex04.data
+package com.tijanidian.add_playground.ut03ex04.data.local
 
 import android.content.Context
 import com.tijanidian.add_playground.ut03ex04.app.Ut03Ex04DataBase
 import com.tijanidian.add_playground.ut03ex04.data.local.entities.CustomerEntity
 import com.tijanidian.add_playground.ut03ex04.domain.CustomerModel
+import com.tijanidian.add_playground.ut03ex04.domain.CustomerRepository
 
-class CustomerLocalSource(applicationContext: Context) {
+class CustomerLocalDataSource(applicationContext: Context):CustomerRepository {
 
     //Instancia de la BD
     private val db=Ut03Ex04DataBase.getInstance(applicationContext)
@@ -28,7 +29,7 @@ class CustomerLocalSource(applicationContext: Context) {
         return customer.toModel()
     }
 
-    fun saveCustomer(customerModel: CustomerModel){
+    override suspend fun saveCustomer(customerModel: CustomerModel){
         db.customerDao().insert(CustomerEntity.toEntity(customerModel))
     }
 

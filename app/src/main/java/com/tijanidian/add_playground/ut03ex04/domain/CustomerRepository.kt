@@ -5,6 +5,6 @@ interface CustomerRepository {
      *  Repositorio con el que accedemos ala información
      */
 
-    fun saveCustomer():CustomerModel
+   suspend fun saveCustomer(customerModel: CustomerModel)
 
 }
