@@ -28,12 +28,12 @@ Desarrollar aplicaciones que gestionen información almacenada en Shared Prefere
 
 Los siguientes criterios permitiran saber si se ha conseguido el **objetivo**
 
--[] El alumno sabe guardar datos en un fichero xml (Shared Preferences).
--[] El alumno sabe eliminar datos en un fichero xml (Shared Preferences).
--[] El alumno sabe actualizar datos en un fichero xml (Shared Preferences).
--[] El alumno sabe leer información de un fichero xml (Shared Preferences).
--[] El alumno sabe serializar.
--[] El alumno documento el código (Pull Request)
+- El alumno sabe guardar datos en un fichero xml (Shared Preferences).
+- El alumno sabe eliminar datos en un fichero xml (Shared Preferences).
+- El alumno sabe actualizar datos en un fichero xml (Shared Preferences).
+- El alumno sabe leer información de un fichero xml (Shared Preferences).
+- El alumno sabe serializar.
+- El alumno documento el código (Pull Request)
 
 ## Cosas a tener en cuenta
 
