@@ -96,11 +96,11 @@ data class CustomerEntity(
      */
 
     data class InvoiceLineAndProduct(
-        @Embedded val invoiceEntity:InvoiceEntity,
+        @Embedded val invoiceLineEntity: InvoiceLineEntity,
         @Relation(
             parentColumn = "id",
-            entityColumn = "customerId"
-        ) val customerEntity: CustomerEntity
+            entityColumn = "productId"
+        ) val productEntity: ProductEntity
     )
 
 

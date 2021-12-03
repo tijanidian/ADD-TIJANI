@@ -6,6 +6,6 @@ import com.tijanidian.add_playground.ut03ex04.domain.CustomerRepository
 
 class CustomerDataRepository(private val customerLocalDataSource: CustomerLocalDataSource):CustomerRepository {
     override suspend fun saveCustomer(customerModel: CustomerModel) {
-       customerLocalDataSource.deleCustomer(customerModel)
+       customerLocalDataSource.saveCustomer(customerModel)
     }
 }
