@@ -1,4 +1,4 @@
-package ut02
+package com.tijanidian.add_playground.ut02
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

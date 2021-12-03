@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tijanidian.add_playground.ut02.SharePreferencesActivity">
+    tools:context=".ut03ex04.presentation.Ut03Ex04Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
