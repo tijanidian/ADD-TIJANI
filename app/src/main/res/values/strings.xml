@@ -19,4 +19,6 @@
     <string name="preference_file_exercise02">ut02_exercise02</string>
     <string name="preference_encrypt_file_key">ut02_shared_pref_encrypt</string>
 
+    <string name="label_ut03_ex02">Room - Database</string>
+
 </resources>
