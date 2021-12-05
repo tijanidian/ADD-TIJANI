@@ -6,4 +6,17 @@
     <string name="label_button_save">Guardar</string>
     <string name="label_button_explorer">Listar Ficheros</string>
     <string name="label_button_show_content">Mostrar contenido</string>
+    <string name="file_key">file_key</string>
+    <string name="encrypt_file_key">file_key_encrypt</string>
+    <string name="label_button_delete">Borrar contenido</string>
+
+    <string name="action_file">Repositorio Ficheros</string>
+    <string name="action_mem">Repositorio Memoria</string>
+    <string name="action_sharpref">Repositorio SharedPreferences</string>
+
+    <!-- Shared Preferences Keys -->
+    <string name="preference_file_key">ut02_shared_pref</string>
+    <string name="preference_file_exercise02">ut02_exercise02</string>
+    <string name="preference_encrypt_file_key">ut02_shared_pref_encrypt</string>
+
 </resources>
