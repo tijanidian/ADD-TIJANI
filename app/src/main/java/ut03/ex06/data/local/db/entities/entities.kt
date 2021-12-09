@@ -13,7 +13,8 @@ data class CompetitionEntity(
     @ColumnInfo(name = "start") val start: Date,
     @ColumnInfo(name = "end") val end: Date,
     @ColumnInfo(name="tapaId") val tapaId:String
-) {/*
+) {
+/*
     fun toModel(tapaEntity: TapaEntity):CompetitionModel{
         return CompetitionModel(
             id,

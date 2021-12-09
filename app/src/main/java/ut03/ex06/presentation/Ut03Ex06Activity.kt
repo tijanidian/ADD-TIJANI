@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.google.gson.Gson
 import com.tijanidian.add_playground.R
+import com.tijanidian.add_playground.databinding.ActivityUt03Ex06Binding
 import com.tijanidian.commons.serializer.GsonSerializer
 import ut03.ex06.data.local.db.TapaDbLocalSource
 import ut03.ex06.data.local.files.TapaFileLocalSource
@@ -12,6 +13,10 @@ import ut03.ex06.data.local.xml.TapaXmlLocalSource
 
 class Ut03Ex06Activity : AppCompatActivity() {
     private val TAG = Ut03Ex06Activity::class.java.simpleName
+
+    private val binding: ActivityUt03Ex06Binding by lazy {
+        ActivityUt03Ex06Binding.inflate(layoutInflater)
+    }
 
     //probar la aplicación con una fuente de datos de ficheros.
    private val viewModel:Ut03Ex06ViewModel by lazy {
@@ -29,23 +34,66 @@ class Ut03Ex06Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ut03_ex06)
-        init()
+        setContentView(binding.root)
+
+        initDb()
+        initFiles()
+        initXml()
     }
 
 
-    private fun init() {
-        loadTapas()
-        loadTapa("2")
+
+    private fun initFiles(){
+        loadTapasFile()
+        loadTapaFile("2")
+    }
+    private fun initXml(){
+        loadTapasXml()
+        loadTapaXml("2")
+    }
+    private fun initDb(){
+        loadTapasDb()
+        loadTapaDb("2")
     }
 
-    private fun loadTapas() {
-        viewModel.loadTapas()
+
+    //Files
+    private fun loadTapasFile() {
+        binding.actionTapasFile.setOnClickListener {
+            viewModel.loadTapas()
+        }
     }
 
-    private fun loadTapa(idTapa:String) {
-        viewModel.loadTapa(idTapa)
+    private fun loadTapaFile(idTapa:String) {
+        binding.actionTapaFile.setOnClickListener {
+            viewModel.loadTapa(idTapa)
+        }
     }
+
+    //Xml
+    private fun loadTapasXml(){
+        binding.actionTapasXml.setOnClickListener {
+            viewModel.loadTapas()
+        }
+    }
+    private fun loadTapaXml(idTapa:String){
+        binding.actionTapaXml.setOnClickListener {
+            viewModel.loadTapa(idTapa)
+        }
+    }
+    //Db
+    private fun loadTapasDb(){
+        binding.actionTapasDb.setOnClickListener {
+            viewModel.loadTapas()
+        }
+    }
+
+    private fun loadTapaDb(idTapa:String){
+        binding.actionTapaDb.setOnClickListener {
+            viewModel.loadTapa(idTapa)
+        }
+    }
+
 
     private fun renderUiTapas(tapasViewState: TapasViewState) {
         tapasViewState.tapaModels?.let {

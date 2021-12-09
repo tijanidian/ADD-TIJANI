@@ -4,12 +4,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import ut03.ex06.data.local.db.TapaAndBar
+import ut03.ex06.data.local.db.TapaEntity
 
 @Dao
 interface TapaDao {
 
     @Insert
-    fun insert(tapa: TapaAndBar)
+    fun insert(tapa: TapaEntity)
 
     @Query("SELECT * FROM tapas")
     fun getTapas(): List<TapaAndBar>
