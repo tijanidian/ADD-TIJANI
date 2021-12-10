@@ -21,4 +21,13 @@
 
     <string name="label_ut03_ex02">Room - Database</string>
 
+    <string name="save_tapa_file">save tapa file</string>
+    <string name="save_tapas_file">save tapas file</string>
+
+    <string name="save_tapa_xml">save tapa xml</string>
+    <string name="save_tapas_xml">save tapas xml</string>
+
+    <string name="save_tapa_db">save tapa db</string>
+    <string name="save_tapas_db">save tapas db</string>
+
 </resources>

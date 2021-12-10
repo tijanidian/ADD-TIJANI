@@ -12,13 +12,13 @@
     <Button
         android:id="@+id/action_tapa_file"
         android:layout_gravity="center"
-        android:text="@string/app_name"
+        android:text="@string/save_tapa_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/action_tapas_file"
         android:layout_gravity="center"
-        android:text="@string/app_name"
+        android:text="@string/save_tapas_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -26,7 +26,7 @@
         android:id="@+id/action_tapas_xml"
         android:textColor="@color/teal_200"
         android:layout_gravity="center"
-        android:text="@string/app_name"
+        android:text="@string/save_tapas_xml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -34,7 +34,7 @@
         android:id="@+id/action_tapa_xml"
         android:textColor="@color/teal_200"
         android:layout_gravity="center"
-        android:text="@string/app_name"
+        android:text="@string/save_tapa_xml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -42,7 +42,7 @@
         android:id="@+id/action_tapas_db"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:text="@string/app_name"
+        android:text= "@string/save_tapas_db"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -50,7 +50,7 @@
         android:id="@+id/action_tapa_db"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:text="@string/app_name"
+        android:text="@string/save_tapa_db"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

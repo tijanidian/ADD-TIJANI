@@ -2,30 +2,8 @@ package ut03.ex06.data.local.db
 
 import androidx.room.*
 import ut03.ex06.domain.BarModel
-import ut03.ex06.domain.CompetitionModel
 import ut03.ex06.domain.TapaModel
-import java.util.*
 
-
-@Entity(tableName = "competition")
-data class CompetitionEntity(
-    @PrimaryKey @ColumnInfo(name = "id") val id: String,
-    @ColumnInfo(name = "start") val start: Date,
-    @ColumnInfo(name = "end") val end: Date,
-    @ColumnInfo(name="tapaId") val tapaId:String
-) {
-/*
-    fun toModel(tapaEntity: TapaEntity):CompetitionModel{
-        return CompetitionModel(
-            id,
-            start,
-            end,
-        )
-    }
-*/
-
-
-}
 
 
 @Entity(tableName = "bar")
