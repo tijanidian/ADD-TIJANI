@@ -1,48 +1,16 @@
 package com.tijanidian.add_playground.ut03ex04.data.local
 
-import android.content.Context
-import com.tijanidian.add_playground.ut03ex04.app.Ut03Ex04DataBase
-import com.tijanidian.add_playground.ut03ex04.data.local.entities.CustomerEntity
 import com.tijanidian.add_playground.ut03ex04.domain.CustomerModel
-import com.tijanidian.add_playground.ut03ex04.domain.CustomerRepository
 
-class CustomerLocalDataSource(applicationContext: Context):CustomerRepository {
+interface CustomerLocalDataSource {
 
-    //Instancia de la BD
-    private val db=Ut03Ex04DataBase.getInstance(applicationContext)
+    suspend fun fetchCustomer(): List<CustomerModel>
 
-    init {
-        Thread {
-            db.clearAllTables()
-        }.start()
-        Thread.sleep(1000)
-    }
+    suspend fun fetchByIdCustomert(id: Int): CustomerModel
 
-    fun fetchCustomer():List<CustomerModel>{
-        val customer=db.customerDao().fetch()
-        return customer.map { customerEntity -> customerEntity.toModel()  }?: mutableListOf()
-    }
+    suspend fun saveCustomer(customerModel: CustomerModel)
 
+    suspend fun deleCustomer(customerModel: CustomerModel)
 
-    fun fetchByIdCustomert(id:Int):CustomerModel{
-        val customer=db.customerDao().fetchById(id)
-        return customer.toModel()
-    }
-
-    override suspend fun saveCustomer(customerModel: CustomerModel){
-        db.customerDao().insert(CustomerEntity.toEntity(customerModel))
-    }
-
-    fun deleCustomer(customerModel: CustomerModel){
-        db.customerDao().delete(CustomerEntity.toEntity(customerModel))
-    }
-
-    fun updateCustomer(customerModel: CustomerModel){
-        db.customerDao().delete(CustomerEntity.toEntity(customerModel))
-    }
-
-    /**
-     * Product
-     */
-
+    suspend fun updateCustomer(customerModel: CustomerModel)
 }

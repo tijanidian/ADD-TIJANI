@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.tijanidian.add_playground.ut03ex04.data.local.dao.CustomerDao
-import com.tijanidian.add_playground.ut03ex04.data.local.entities.CustomerEntity
+import com.tijanidian.add_playground.ut03ex04.data.local.db.dao.CustomerDao
+import com.tijanidian.add_playground.ut03ex04.data.local.db.entities.CustomerEntity
 
 @Database(
     entities = [CustomerEntity::class],

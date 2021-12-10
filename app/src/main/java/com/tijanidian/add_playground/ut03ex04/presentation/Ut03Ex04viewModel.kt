@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class Ut03Ex04viewModel(private val saveCustomerUseCase: SaveCustomerUseCase) : ViewModel() {
 
     fun saveCustomer(customerModel: CustomerModel) {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.IO) {
             var save = saveCustomerUseCase.execute(customerModel)
             Log.d("@tijani", "$save")
         }

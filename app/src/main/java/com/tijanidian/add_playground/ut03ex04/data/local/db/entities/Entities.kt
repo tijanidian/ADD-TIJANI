@@ -1,4 +1,4 @@
-package com.tijanidian.add_playground.ut03ex04.data.local.entities
+package com.tijanidian.add_playground.ut03ex04.data.local.db.entities
 
 import androidx.room.*
 import com.tijanidian.add_playground.ut03ex04.domain.CustomerModel

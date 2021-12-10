@@ -1,7 +1,7 @@
-package com.tijanidian.add_playground.ut03ex04.data.local.dao
+package com.tijanidian.add_playground.ut03ex04.data.local.db.dao
 
 import androidx.room.*
-import com.tijanidian.add_playground.ut03ex04.data.local.entities.CustomerEntity
+import com.tijanidian.add_playground.ut03ex04.data.local.db.entities.CustomerEntity
 
 @Dao
 interface CustomerDao {

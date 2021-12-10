@@ -7,4 +7,8 @@ interface CustomerRepository {
 
    suspend fun saveCustomer(customerModel: CustomerModel)
 
+   suspend fun fetchCustomers():List<CustomerModel>
+
+   suspend fun fetchCustomById(idCustomer:Int):CustomerModel
+
 }
