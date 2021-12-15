@@ -11,14 +11,16 @@
         android:theme="@style/Theme.ADD_Playground">
 
         <activity
-            android:name="com.tijanidian.add_playground.ut02.SharePreferencesActivity"
-            android:exported="true" />
+
+        android:name="com.tijanidian.add_playground.ut02.SharePreferencesActivity"
+        android:exported="true" />
         <activity
             android:name="com.tijanidian.add_playground.ut02.exercise02.Exercise02Activity"
             android:exported="true"/>
-            <activity
-                android:name="com.tijanidian.add_playground.ut02.ut02Ex04SharePref.presentation.Ex02SharedPrefActivity"
-                android:exported="true" >
+        <activity
+            android:name="com.tijanidian.add_playground.ut02.ut02Ex04SharePref.presentation.Ex02SharedPrefActivity"
+            android:exported="true" >
+      
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +28,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ut_01.MainActivity"
-            android:exported="true" />
+        android:name=".ut_01.MainActivity"
+
+        android:exported="true" />
     </application>
 
 </manifest>
