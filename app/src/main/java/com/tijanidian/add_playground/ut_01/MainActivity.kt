@@ -1,4 +1,4 @@
-package com.tijanidian.add_playground
+package com.tijanidian.add_playground.ut_01
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
-import com.tijanidian.add_playground.ut_01.FileApp
+import com.tijanidian.add_playground.R
 
 class MainActivity : AppCompatActivity() {
     //creamos colecion de String de colores, tipo mutable

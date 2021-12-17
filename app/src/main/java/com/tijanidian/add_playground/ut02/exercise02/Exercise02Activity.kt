@@ -1,10 +1,10 @@
-package ut02.exercise02
+package com.tijanidian.add_playground.ut02.exercise02
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.tijanidian.add_playground.R
-import commons.GsonSerializer
+import com.tijanidian.add_playground.commons.GsonSerializer
 
 /**
  * Actividad que me permite ejecutar una fuente de datos en concreto según el botón pulsado.

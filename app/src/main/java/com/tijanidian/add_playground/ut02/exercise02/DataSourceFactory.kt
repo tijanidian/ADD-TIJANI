@@ -1,8 +1,8 @@
-package ut02.exercise02
+package com.tijanidian.add_playground.ut02.exercise02
 
 import androidx.appcompat.app.AppCompatActivity
 import com.tijanidian.add_playground.R
-import commons.Serializer
+import com.tijanidian.add_playground.commons.Serializer
 
 class DataSourceFactory<T:LocalModel>(
     private val activity: AppCompatActivity,

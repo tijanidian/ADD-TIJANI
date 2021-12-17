@@ -1,4 +1,4 @@
-package ut02
+package com.tijanidian.add_playground.ut02
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -26,16 +26,18 @@ class LocalDataSource(private val context: AppCompatActivity) {
         EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
+
     //Sirve para guardar de forma sincrona, ¡CUIDADO! puede bloquear el hilo de la IU
-    fun saveSync(key:String, data:String){
-        val edit=sharedPref.edit()
-        edit?.putString(key,data)
+    fun saveSync(key: String, data: String) {
+        val edit = sharedPref.edit()
+        edit?.putString(key, data)
         edit?.apply()
     }
+
     //Con with nos evitamos tener que repetir los .edit
-    fun shortSaveAsync(key:String, data:String){
-        with(sharedPref.edit()){
-            putString(key,data)
+    fun shortSaveAsync(key: String, data: String) {
+        with(sharedPref.edit()) {
+            putString(key, data)
             apply()
         }
     }
@@ -52,7 +54,6 @@ class LocalDataSource(private val context: AppCompatActivity) {
         edit?.putString(key, data)
         edit?.apply()
     }
-
 
 
     fun saveSyncEncrypt(key: String, data: String) {
