@@ -17,8 +17,11 @@
             android:name="ut02.exercise02.Exercise02Activity"
             android:exported="true"/>
         <activity
-        android:name="ut03.ex03.presentation.Ut03Ex03Activity"
-        android:exported="true" >
+            android:name="ut03.ex03.presentation.Ut03Ex03Activity"
+            android:exported="true" />
+        <activity
+            android:name="ut03.ex06.presentation.Ut03Ex06Activity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
