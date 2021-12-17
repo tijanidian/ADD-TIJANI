@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ADD_Playground">
-
         <activity
 
         android:name="com.tijanidian.add_playground.ut02.SharePreferencesActivity"
@@ -19,14 +18,17 @@
             android:exported="true"/>
         <activity
             android:name="com.tijanidian.add_playground.ut02.ut02Ex04SharePref.presentation.Ex02SharedPrefActivity"
-            android:exported="true" >
-      
+            android:exported="true"/>
+        <activity
+        android:name="ut03.ex03.presentation.Ut03Ex03Activity"
+        android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
         android:name=".ut_01.MainActivity"
 
